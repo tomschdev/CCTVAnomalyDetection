@@ -12,7 +12,6 @@ import json
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import matplotlib.pyplot as plt
 from datetime import datetime
-import cv2
 import pandas as pd
 import streamlit as st
 import base64
