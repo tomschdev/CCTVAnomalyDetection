@@ -8,7 +8,7 @@ import copy
 import time
 from itertools import islice
 import json
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+# from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -17,13 +17,13 @@ import pandas as pd
 import streamlit as st
 import base64
 from itertools import islice
-from sklearn.metrics import roc_curve, auc
-from sklearn.metrics import roc_auc_score
+# from sklearn.metrics import roc_curve, auc
+# from sklearn.metrics import roc_auc_score
 from statsmodels.tsa.seasonal import seasonal_decompose
 from roccer import compute_score_seq, compute_ROC
 import altair as alt
 from math import ceil
-from sklearn.metrics import RocCurveDisplay, ConfusionMatrixDisplay
+# from sklearn.metrics import RocCurveDisplay, ConfusionMatrixDisplay
 from PIL import Image
 
 
@@ -570,21 +570,21 @@ def anno_vs_score_eval(antn, scores_d):
     plt.rcParams.update({'font.size': 14})
 
     
-    cnt = 0
-    r = 0
-    figcm, axcm = plt.subplots(3,3,constrained_layout=True)
-    # figcm.constrained_layout()
-    for t, cmat in collect_cm.items():
-        disp = ConfusionMatrixDisplay(confusion_matrix=cmat, display_labels=CLASSES)
-        disp.plot(cmap='plasma', ax=axcm[r][cnt % 3], colorbar=False) 
-        axcm[r][cnt%3].title.set_text("threshold = {}".format(t))
-        cnt+=1
-        if cnt % 3 == 0:
-            r += 1
+    # cnt = 0
+    # r = 0
+    # figcm, axcm = plt.subplots(3,3,constrained_layout=True)
+    # # figcm.constrained_layout()
+    # for t, cmat in collect_cm.items():
+    #     disp = ConfusionMatrixDisplay(confusion_matrix=cmat, display_labels=CLASSES)
+    #     disp.plot(cmap='plasma', ax=axcm[r][cnt % 3], colorbar=False) 
+    #     axcm[r][cnt%3].title.set_text("threshold = {}".format(t))
+    #     cnt+=1
+    #     if cnt % 3 == 0:
+    #         r += 1
             
-    figbestcm, axbestcm = plt.subplots(1,1)
-    dispbest = ConfusionMatrixDisplay(confusion_matrix=collect_cm[0.4], display_labels=CLASSES)
-    dispbest.plot(cmap='Blues', ax=axbestcm, colorbar=True)
+    # figbestcm, axbestcm = plt.subplots(1,1)
+    # dispbest = ConfusionMatrixDisplay(confusion_matrix=collect_cm[0.4], display_labels=CLASSES)
+    # dispbest.plot(cmap='Blues', ax=axbestcm, colorbar=True)
     
     
       
@@ -616,7 +616,7 @@ def anno_vs_score_eval(antn, scores_d):
     # disp.plot(cmap='plasma', ax=ax, colorbar=False) 
 
     #TODO calc ROC and AUC and return as well
-    return figbestcm, anno_sgm_d, res_d
+    return None, anno_sgm_d, res_d
 
 
 def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp):
