@@ -8,7 +8,6 @@ import copy
 import time
 from itertools import islice
 import json
-# from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -16,15 +15,10 @@ import pandas as pd
 import streamlit as st
 import base64
 from itertools import islice
-# from sklearn.metrics import roc_curve, auc
-# from sklearn.metrics import roc_auc_score
 from statsmodels.tsa.seasonal import seasonal_decompose
-from roccer import compute_score_seq, compute_ROC
 import altair as alt
 from math import ceil
-# from sklearn.metrics import RocCurveDisplay, ConfusionMatrixDisplay
 from PIL import Image
-
 
 root=os.getcwd()
 ANNO_FILE=os.path.join(root, "demo", "annotations", "Temporal_Anomaly_Annotation.txt")
