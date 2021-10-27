@@ -34,6 +34,148 @@ max_thresh = 0.9
 CLASSES = ["A", "N"]
 PER=10
 
+download_map = {
+    "Vandalism/036" : "https://drive.google.com/file/d/17Ux1IqYHxtWXEF9b6_88ptDKPSBExuko/view?usp=drivesdk", 	               
+    "Vandalism/028" : "https://drive.google.com/file/d/17R5QI0ZkMslJYtSIxeZkIF2OskXL4or3/view?usp=drivesdk", 	
+    "Vandalism/017" : "https://drive.google.com/file/d/17OBr6u4P2T7isjAwLkxVfQLnhjIfs-gj/view?usp=drivesdk", 	
+    "Vandalism/015" : "https://drive.google.com/file/d/17MNaLMqiLzV9iRgb59s397uS59samGjo/view?usp=drivesdk", 	
+    "Vandalism/007" : "https://drive.google.com/file/d/17I5-R7DKuGLi7wcHng4AkM9iwPfpUmWL/view?usp=drivesdk", 	
+    "Stealing/079" : "https://drive.google.com/file/d/17FyTR1mpqjkihJJkHQJhD5Cu6q9G01OT/view?usp=drivesdk", 	
+    "Stealing/062" : "https://drive.google.com/file/d/172Q5Q8jGtUDBqvtEGALomdEW9grnhXc-/view?usp=drivesdk", 	
+    "Stealing/058" : "https://drive.google.com/file/d/16mfBdGp7iLvAa7hPD9Z3uS5E-dNasl5P/view?usp=drivesdk", 	
+    "Stealing/036" : "https://drive.google.com/file/d/16d0xZz7hYW4fo6M0fy3MlX3OfJfjeBav/view?usp=drivesdk", 	
+    "Stealing/019" : "https://drive.google.com/file/d/16ZAQJJLf9_mUO9LEAatCp4DbAYA8ZO5s/view?usp=drivesdk", 	
+    "Shoplifting/049" : "https://drive.google.com/file/d/16WqGz8b0xsR_0h9cGXYZ5eiQ6RSg74v4/view?usp=drivesdk", 	
+    "Shoplifting/044" : "https://drive.google.com/file/d/16W30r8P6geRDygqqI4LkhPAVnTAL2O_N/view?usp=drivesdk", 	
+    "Shoplifting/039" : "https://drive.google.com/file/d/16TIaAM-87wHG-diYgvHlE-IauaY914C1/view?usp=drivesdk", 	
+    "Shoplifting/037" : "https://drive.google.com/file/d/16SC_4md1QGed4klbgTMNpd_U1WtlzFQg/view?usp=drivesdk", 	
+    "Shoplifting/034" : "https://drive.google.com/file/d/16RYMGjTRP_m9We1lMVpm_x75-SE7lq4y/view?usp=drivesdk", 	
+    "Shoplifting/033" : "https://drive.google.com/file/d/16P8XrYKKQBonxCyMcUrKWx5wZtxmeqe6/view?usp=drivesdk", 	
+    "Shoplifting/031" : "https://drive.google.com/file/d/16Nc8OX_T9VSpTrPKxHLX0HV3z0NGQGds/view?usp=drivesdk", 	
+    "Shoplifting/029" : "https://drive.google.com/file/d/16MAZVnDh1qcmgqpTDzC5JhfVtCUp1HTU/view?usp=drivesdk", 	
+    "Shoplifting/028" : "https://drive.google.com/file/d/16GLrFMDt4EiXx_r49XjgdCbTi_8MM6nm/view?usp=drivesdk", 	
+    "Shoplifting/027" : "https://drive.google.com/file/d/16DJX9_KwMe0oq1EN8DOkVEzi83X-KF0T/view?usp=drivesdk", 	
+    "Shoplifting/022" : "https://drive.google.com/file/d/166uqo2TmHG3V3du6Aa4WtVy6UJm-D37B/view?usp=drivesdk", 	
+    "Shoplifting/021" : "https://drive.google.com/file/d/164g1zM3PQSYHeMmG8JV5Pd7nyn1bCyqK/view?usp=drivesdk", 	
+    "Shoplifting/020" : "https://drive.google.com/file/d/163swqncqsQbDZnWj1jZqtO1yInTEUe31/view?usp=drivesdk", 	
+    "Shoplifting/017" : "https://drive.google.com/file/d/163YUfNk_cpbTavdaZXzMrHvjxfOCszrM/view?usp=drivesdk", 	
+    "Shoplifting/016" : "https://drive.google.com/file/d/15uKhzDb0zCXQ8npXY2WYzE9ksexVwCN1/view?usp=drivesdk", 	
+    "Shoplifting/015" : "https://drive.google.com/file/d/15t0VYtsMPKsfbvlUMdF4tD4h7pDyc8r1/view?usp=drivesdk", 	
+    "Shoplifting/010" : "https://drive.google.com/file/d/15r07D73ClkRmpxEY7AK2UVwwnUzz9a2P/view?usp=drivesdk", 	
+    "Shoplifting/007" : "https://drive.google.com/file/d/15lNgEGMslVJhtH7mipdZiA0eXeDEdqrh/view?usp=drivesdk", 	
+    "Shoplifting/005" : "https://drive.google.com/file/d/15hkYORbDPkcrZ0sXaKxAQdGRJ3w98T6p/view?usp=drivesdk", 	
+    "Shoplifting/004" : "https://drive.google.com/file/d/15hY0M9kI8OYreGRUV9LA63L3acYpZTuZ/view?usp=drivesdk", 	
+    "Shoplifting/001" : "https://drive.google.com/file/d/15ZWaux1gcaBg8L4PWiuHM0HwHo5y99aU/view?usp=drivesdk", 	
+    "Shooting/048" : "https://drive.google.com/file/d/15c69fVHJSioFYxirHScraAR9xgFbaMy0/view?usp=drivesdk", 	
+    "Shooting/047" : "https://drive.google.com/file/d/15VzkOl5Tl-3YjDdZ9XnU-uKOwp19wDSg/view?usp=drivesdk", 	
+    "Shooting/046" : "https://drive.google.com/file/d/15RdlmP_Za7TZtBvJ8qi-027uTE_UoAVD/view?usp=drivesdk", 	
+    "Shooting/043" : "https://drive.google.com/file/d/15RUW0uuyXeXWHZskHqeiH4P152CF_jUR/view?usp=drivesdk", 	
+    "Shooting/037" : "https://drive.google.com/file/d/15PdMrzpEY_JEwIwvGg4QaaNnWfVTAqbV/view?usp=drivesdk", 	
+    "Shooting/034" : "https://drive.google.com/file/d/15LivepKiZJk-dVYwrgFD1P6ehgxcpgg7/view?usp=drivesdk", 	
+    "Shooting/033" : "https://drive.google.com/file/d/15P8lLPJG9zKimVf8Gx8HhPnxd0Lz3Kqr/view?usp=drivesdk", 	
+    "Shooting/032" : "https://drive.google.com/file/d/15Kh-fV9H8MLRiP0CFNDeRbv5d4qS7vmb/view?usp=drivesdk", 	
+    "Shooting/028" : "https://drive.google.com/file/d/15IrDO9BGmlbQTGy2mtj8uN29-N7i7pQ8/view?usp=drivesdk", 	
+    "Shooting/026" : "https://drive.google.com/file/d/15Bhng92ToMMPkS2_fCF7LSSfGq1Kdl-w/view?usp=drivesdk", 	
+    "Shooting/024" : "https://drive.google.com/file/d/15844OY32orOGuqkO8MBVQGtFEU7pcMHl/view?usp=drivesdk", 	
+    "Shooting/022" : "https://drive.google.com/file/d/157Y8I_99z7hnj649B36UZzqnCdEQrVbL/view?usp=drivesdk", 	
+    "Shooting/021" : "https://drive.google.com/file/d/1574FWgtDBqlk0_7kYzHhcnGivAHfr07n/view?usp=drivesdk", 	
+    "Shooting/019" : "https://drive.google.com/file/d/155vp8bCkjKcQXvnaJ870_eATAqfMWWHC/view?usp=drivesdk", 	
+    "Shooting/018" : "https://drive.google.com/file/d/156RbvyqkQs9NDyeeTQuzCxL2qvFq8kBH/view?usp=drivesdk", 	
+    "Shooting/015" : "https://drive.google.com/file/d/1520jVuxdD7AUk2H9utGKGYtMJ4ILX7E9/view?usp=drivesdk", 	
+    "Shooting/013" : "https://drive.google.com/file/d/151tx2c5wrN93ZOSfHa0iIGPdGADgC3uh/view?usp=drivesdk", 	
+    "Shooting/011" : "https://drive.google.com/file/d/14yX-WDjSoiTida9eq3JMtHfpCdUXHGhE/view?usp=drivesdk", 	
+    "Shooting/010" : "https://drive.google.com/file/d/14w8-Ai3DPrJrgz9XkPYSecY06U9CK6lM/view?usp=drivesdk", 	
+    "Shooting/008" : "https://drive.google.com/file/d/14sDXGaVnXVKOvoFBNZePC2ssWKDolFjb/view?usp=drivesdk", 	
+    "Shooting/007" : "https://drive.google.com/file/d/14bNCouDRD2fMs6Y9x4ktAIdEkjPDbEEW/view?usp=drivesdk", 	
+    "Shooting/004" : "https://drive.google.com/file/d/14_j04fJn38beqtSnbvkVktLyZ67IEynP/view?usp=drivesdk", 	
+    "Shooting/002" : "https://drive.google.com/file/d/14Wjshpy1FRtYn7GMO7lxUzNY25QvJpXi/view?usp=drivesdk", 	
+    "Robbery/137" : "https://drive.google.com/file/d/14V8lNaQoNn6JEvdgJ4NWqxLulst5oFEK/view?usp=drivesdk", 	
+    "Robbery/106" : "https://drive.google.com/file/d/14StJ7vKF24rTkNyA1vIz7iUIAoPuwZvN/view?usp=drivesdk", 	
+    "Robbery/102" : "https://drive.google.com/file/d/14OJKpCTB69fzpdqx_7AuA26uy4MchmUN/view?usp=drivesdk", 	
+    "Robbery/050" : "https://drive.google.com/file/d/14INj_Q_drHs2Zow4P1zixer9GIcANJwq/view?usp=drivesdk", 	
+    "Robbery/048" : "https://drive.google.com/file/d/14GqlyxNeGf7jToy5Y4KnVtRdg2nbvaJx/view?usp=drivesdk", 	
+    "RoadAccidents/133" : "https://drive.google.com/file/d/14FvWkRS0o5IzBS5bk1sVacfwbFjFrJsZ/view?usp=drivesdk", 	
+    "RoadAccidents/132" : "https://drive.google.com/file/d/14Cij4O4fwTb0CJ3BM4FRhAmEpJOhLgIS/view?usp=drivesdk", 	
+    "RoadAccidents/131" : "https://drive.google.com/file/d/145ykTgAvFwJV4NITenu7lMZ6__sIGB06/view?usp=drivesdk", 	
+    "RoadAccidents/128" : "https://drive.google.com/file/d/142kahtXgWhq4-0tJTwNF5as1r-h-rmS7/view?usp=drivesdk", 	
+    "RoadAccidents/127" : "https://drive.google.com/file/d/140TmuD7FynWybbGl7tsx8mo6rjlZYM1v/view?usp=drivesdk", 	
+    "RoadAccidents/125" : "https://drive.google.com/file/d/13sOox0W0PhKEEUScG9qhgtnISM_B1Y0J/view?usp=drivesdk", 	
+    "RoadAccidents/124" : "https://drive.google.com/file/d/13ra-bNFm-0AlwJXAZuBmZbdoqMy7fEI7/view?usp=drivesdk", 	
+    "RoadAccidents/123" : "https://drive.google.com/file/d/13oAuHIkoBs56Ffv5bTZTogZ_iiR2c5ud/view?usp=drivesdk", 	
+    "RoadAccidents/122" : "https://drive.google.com/file/d/13pTzefKVz2axR_KNLjmzeGEDgrTiX6WA/view?usp=drivesdk", 	
+    "RoadAccidents/121" : "https://drive.google.com/file/d/13kqwP2Qo2NMuV8GbKlcYYNU4W22sXdG0/view?usp=drivesdk", 	
+    "RoadAccidents/022" : "https://drive.google.com/file/d/13moIWeEXQOWebVLFO6qcqd4nJxLA__WU/view?usp=drivesdk", 	
+    "RoadAccidents/021" : "https://drive.google.com/file/d/13kRbYR5jNL6XHz5SzidqO4K4F_zR8xaI/view?usp=drivesdk", 	
+    "RoadAccidents/020" : "https://drive.google.com/file/d/13fJbGEmAYKx2a9QxD5Ga1kzviAnqb6AL/view?usp=drivesdk", 	
+    "RoadAccidents/019" : "https://drive.google.com/file/d/13YsXhOL3XoGOVHMLdwBhhYefggXv6q4C/view?usp=drivesdk", 	
+    "RoadAccidents/017" : "https://drive.google.com/file/d/13W-qeIgtO_Lq0UqX3vddn4JATmgj5bS7/view?usp=drivesdk", 	
+    "RoadAccidents/016" : "https://drive.google.com/file/d/13XKpBSkxBBdkdys6VYF6eCpRQ_2_X3v6/view?usp=drivesdk", 	
+    "RoadAccidents/012" : "https://drive.google.com/file/d/13PvCeGTdO_cttaHQoyPJucSxwAFNBTlz/view?usp=drivesdk", 	
+    "RoadAccidents/011" : "https://drive.google.com/file/d/138XWPCz2kdpFOa56_cm0LOEO0M9ufEo0/view?usp=drivesdk", 	
+    "RoadAccidents/010" : "https://drive.google.com/file/d/13CWAgWfOObuo3jz2QbQSPGVszjIaDFBN/view?usp=drivesdk", 	
+    "RoadAccidents/009" : "https://drive.google.com/file/d/135hH7rfa9x5nNbB20z_x5cv2oaWbk_k3/view?usp=drivesdk", 	
+    "RoadAccidents/004" : "https://drive.google.com/file/d/12y6CdpuX_nRq-43klJwxeVbg_QhBghN7/view?usp=drivesdk", 	
+    "RoadAccidents/002" : "https://drive.google.com/file/d/12uOYWF_enGrMlZHkCm4o7EsivugeEoK9/view?usp=drivesdk", 	
+    "RoadAccidents/001" : "https://drive.google.com/file/d/12wPNAP-N_1l6tAYuu5v8t7dJ5uaWLrH-/view?usp=drivesdk", 	
+    "Fighting/047" : "https://drive.google.com/file/d/12l6ONNB3kwGGxn0JNrWrNWvNl9GS0AxG/view?usp=drivesdk", 	
+    "Fighting/042" : "https://drive.google.com/file/d/12icGppDWMNNdEWe54ikbv966cAPhdSW1/view?usp=drivesdk", 	
+    "Fighting/033" : "https://drive.google.com/file/d/12f99jTsVvvK-YqxEWugHpxLE14TFLHiq/view?usp=drivesdk", 	
+    "Fighting/018" : "https://drive.google.com/file/d/12fNPlh5jq9e8puPJqUn_dQIW8yYfjdJS/view?usp=drivesdk", 	
+    "Fighting/003" : "https://drive.google.com/file/d/12WAz6XzJafIyM27kHngRlGVetSTzo3hg/view?usp=drivesdk", 	
+    "Explosion/043" : "https://drive.google.com/file/d/12PvilocLr-etMNOBmuqJ1HGR2imwLRRt/view?usp=drivesdk", 	
+    "Explosion/039" : "https://drive.google.com/file/d/12NiB9haRGH0gaDEMvaJ5d1uoz39qjBr7/view?usp=drivesdk", 	
+    "Explosion/036" : "https://drive.google.com/file/d/12HsEVrikbwdDqZIMPjbVM8zfta467rUw/view?usp=drivesdk", 	
+    "Explosion/035" : "https://drive.google.com/file/d/12GwZXb6111qf64XdC4EofeV2Y3LmObKM/view?usp=drivesdk", 	
+    "Explosion/033" : "https://drive.google.com/file/d/12Btc9RPPJFFKiRrBZJ4FUK0vex17yWs7/view?usp=drivesdk", 	
+    "Explosion/029" : "https://drive.google.com/file/d/1250pE2DzYX1ab2B0IxQMVSF4XPFBonHS/view?usp=drivesdk", 	
+    "Explosion/028" : "https://drive.google.com/file/d/126gCDYrsXzfBWq_NJCH3EvF72cxJoGxB/view?usp=drivesdk", 	
+    "Explosion/027" : "https://drive.google.com/file/d/126js2RXOQ0dT80o-Ou7XQEsOcu9WFvXz/view?usp=drivesdk", 	
+    "Explosion/025" : "https://drive.google.com/file/d/11zhhlL5M53S15HQ-PePU8-BsBUhTavCz/view?usp=drivesdk", 	
+    "Explosion/022" : "https://drive.google.com/file/d/121y5X_EtNTfcsy8YDSNfmjCgqMMyiXbx/view?usp=drivesdk", 	
+    "Explosion/021" : "https://drive.google.com/file/d/123vRU_HnBW_Ps-HYBeErnDoScLGQpBIY/view?usp=drivesdk", 	
+    "Explosion/020" : "https://drive.google.com/file/d/11wieTvYFd22_hU6X2VDWNhF9smgQiJEG/view?usp=drivesdk", 	
+    "Explosion/017" : "https://drive.google.com/file/d/11mj3zynz3nvX7YvkUMiUrJSfDR5bBv1e/view?usp=drivesdk", 	
+    "Explosion/016" : "https://drive.google.com/file/d/11pFlBQhyfkFA7gm75tua4Ha-Oc1RRGW_/view?usp=drivesdk", 	
+    "Explosion/013" : "https://drive.google.com/file/d/11uzGTI3sTewcpsKr6hSBJ6_-QQvYHD2U/view?usp=drivesdk", 	
+    "Explosion/011" : "https://drive.google.com/file/d/11jmjcl-2TtolY2yu_g559w2w4KApx7jP/view?usp=drivesdk", 	
+    "Explosion/010" : "https://drive.google.com/file/d/11lCSse5Bk4b9xgj9ZgURo4t7MNBOypF0/view?usp=drivesdk", 	
+    "Explosion/008" : "https://drive.google.com/file/d/11gIwUPjEsrm_IeUB2Cxl78aLwN-tPyEF/view?usp=drivesdk", 	
+    "Explosion/007" : "https://drive.google.com/file/d/11egOr43a_Cm7r-kd1GJRV78_OupJWAEI/view?usp=drivesdk", 	
+    "Explosion/004" : "https://drive.google.com/file/d/11VDtxDE76U7OAtPY2YTQ0IQgJc85xIVD/view?usp=drivesdk", 	
+    "Explosion/002" : "https://drive.google.com/file/d/11Atcpw9rvaTo0RpMv_b6U5zhkoWrK4_6/view?usp=drivesdk", 	
+    "Burglary/092" : "https://drive.google.com/file/d/11P_vMBLw6Y7vAuV5srSf_hjpqvllo4KF/view?usp=drivesdk", 	
+    "Burglary/079" : "https://drive.google.com/file/d/118trVHjr3qcH_gWQPG0V_lbbYXMQt8sK/view?usp=drivesdk", 	
+    "Burglary/076" : "https://drive.google.com/file/d/117B7kEr74NGF2tnQWW0PNJIQkgHd4x2E/view?usp=drivesdk", 	
+    "Burglary/061" : "https://drive.google.com/file/d/10tEkmdui0KlJARqwo1nceruOVM5HrsYj/view?usp=drivesdk", 	
+    "Burglary/037" : "https://drive.google.com/file/d/11103mcmHFvLdKNViCHVOHP5sfLInSW9N/view?usp=drivesdk", 	
+    "Burglary/035" : "https://drive.google.com/file/d/10fys43X5vs1B8L42DmU-9k1VsuC2bTza/view?usp=drivesdk", 	
+    "Burglary/033" : "https://drive.google.com/file/d/10i5EFXD8CI-jX7wlpx30fNyj8zFsOw9N/view?usp=drivesdk", 	
+    "Burglary/032" : "https://drive.google.com/file/d/10edFWCn-skNDEtrkV_i3dmLQSlaNHh1d/view?usp=drivesdk", 	
+    "Burglary/024" : "https://drive.google.com/file/d/10b-k-GW_RwOQN5rHVvWuqLQek_hcztqJ/view?usp=drivesdk", 	
+    "Burglary/021" : "https://drive.google.com/file/d/10apwMBVBn7pAlgkz9vDxvdIuJd1v0J3U/view?usp=drivesdk", 	
+    "Burglary/018" : "https://drive.google.com/file/d/10Y8sEb665LOecBpxyqDBpQ1r6-5RQCxp/view?usp=drivesdk", 	
+    "Burglary/017" : "https://drive.google.com/file/d/10YynTofEAaMoN420WA5JVfTeBHk40KG3/view?usp=drivesdk", 	
+    "Burglary/005" : "https://drive.google.com/file/d/10WJQVkyDrtKJE7Qa1n2HvI8Yhe7fI6rW/view?usp=drivesdk", 	
+    "Assault/011" : "https://drive.google.com/file/d/10TwdVXZW5Q-oPmXYnykAWFr7TnhWSn2M/view?usp=drivesdk", 	
+    "Assault/010" : "https://drive.google.com/file/d/10RYTZH2nXZfw933Tatocn9-yVLa0Rh17/view?usp=drivesdk", 	
+    "Assault/006" : "https://drive.google.com/file/d/10HWg6isL2DDkhtJ0cGB3KwaCIktokD7a/view?usp=drivesdk", 	
+    "Arson/041" : "https://drive.google.com/file/d/109_m9vYC9sAL6LZNbky1l3apK_M20wjo/view?usp=drivesdk", 	
+    "Arson/035" : "https://drive.google.com/file/d/10H4E5LMgijmcn4NWWRrxt2ErgrNbpSn3/view?usp=drivesdk", 	
+    "Arson/022" : "https://drive.google.com/file/d/106rKw8WYUzvX-X74Z5_QMPvrLg6UKKLw/view?usp=drivesdk", 	
+    "Arson/018" : "https://drive.google.com/file/d/102JzJupDmdc3-3dOaAu5iDYh5oWN0W8P/view?usp=drivesdk", 	
+    "Arson/016" : "https://drive.google.com/file/d/103kNXccBECt4mvLqayKyNpMykwiISXLa/view?usp=drivesdk", 	
+    "Arson/011" : "https://drive.google.com/file/d/1-krp2VUEsYm9HVC2kLx2PyHoQx4XFS3o/view?usp=drivesdk", 	
+    "Arson/010" : "https://drive.google.com/file/d/1002G3mNtWcLd1Xbli_sDoo0UOEKCYdb_/view?usp=drivesdk", 	
+    "Arson/009" : "https://drive.google.com/file/d/101dbqN2-Fw7twcVANibH2HuIvl4MBb78/view?usp=drivesdk", 	
+    "Arson/007" : "https://drive.google.com/file/d/1-jRfbAxpSmAd-RQ8biXCxJupCobVF24y/view?usp=drivesdk", 	
+    "Arrest/039" : "https://drive.google.com/file/d/1-gaLp3sKWGl9Ev5JasOLESFTVkiHq8pt/view?usp=drivesdk", 	
+    "Arrest/030" : "https://drive.google.com/file/d/1-cPEpJt-UyeL-WdXwN0TpB-3pjJ8lW4-/view?usp=drivesdk", 	
+    "Arrest/024" : "https://drive.google.com/file/d/1-Q8RNwfNEknRxfHRPxHGsYfYPDfro5YO/view?usp=drivesdk", 	
+    "Arrest/007" : "https://drive.google.com/file/d/1-AV22JGFYsOWW6voTiwOqDjf24JdKA4-/view?usp=drivesdk", 	
+    "Arrest/001" : "https://drive.google.com/file/d/1-Hf_Cf8Lq1fijcuauF2vV3LsVbS1GDoZ/view?usp=drivesdk", 	
+    "Abuse/030" : "https://drive.google.com/file/d/1-4aOknNPApd1Du2S22B6r8mvaSlcQJjx/view?usp=drivesdk", 	
+    "Abuse/028" : "https://drive.google.com/file/d/1-90CjYlAaBtU-UhQdoPId1JL0ZdhRfYq/view?usp=drivesdk"
+}
 # experiment = ["RoadAccidents/002", "Explosion/008"]
 
 def read_anno_file(f):
@@ -645,167 +787,138 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
     st.image(roc_disp, width=None)
     st.image(cm_disp, width=None)
     
-    cnt = 0
     # st.write(scores_d.keys())
-    for vid in sorted(os.listdir(VIDEO_PATH), reverse=True):
+    st.write("check out this [link](https://drive.google.com/file/d/1AYPFh8-2VEmQb95I0Of-pm7y3H1KofM4/view?usp=sharing)")
+    for lbl in sorted(download_map.keys(), reverse=True):
         # st.write(vid)
-        cnt += 1
-        if vid.endswith(".mp4"):
-            title = os.path.splitext(vid)[0][:-5]
-            
-            if title[:6] == "Normal":
-                cat = "Normal"
+        cat, num = lbl.split("/")       
+        exp = st.expander(label=lbl, expanded=False)
+
+        with exp:
+            dlkey = "{}{}".format(cat, num) 
+            st.write("[Playback Video]({}})".format(dlkey))
+                
+            if lbl in combine_d.keys():
+                combine_data = pd.DataFrame({
+                    "final scores": combine_d[lbl],
+                })
             else:
-                cat = title[:-3]
-            num = title[-3:]
-
-            lbl = "{}/{}".format(cat, num)
+                combine_data = pd.DataFrame({
+                    "final scores": np.zeros(1), 
+                })
+                print("[PRED EVAL] <WARNING> no matching label for this video in COMBINE dict.")
             
-            if lbl in res_d.keys():
-                if res_d[lbl] is None:
-                    emj = ":white_circle:" 
-                else:
-                    emj = ":large_blue_circle:" if res_d[lbl] else ":red_circle:" 
-                    
-            # if lbl in experiment:
-            exp = st.expander(label=lbl, expanded=False)
-            # else:
-                # exp = st.beta_expander(label=lbl, expanded=False)
+            if lbl in sims_d.keys():
+                flow_data = pd.DataFrame({
+                    "flow scores": sims_d[lbl],
+                })
+            else:
+                flow_data = pd.DataFrame({
+                    "flow scores": np.zeros(1), 
+                })
+                print("[PRED EVAL] <WARNING> no matching label for this video in FLOW dict.")
                 
-            # st.write(emj) 
-            with exp:
+            if lbl in lkkm_d.keys():
+                # print("is in lkkm_d.keys()******")
+                lkkm_data = pd.DataFrame({
+                    "lkkm scores": lkkm_d[lbl],
+                })
+            else:
+                lkkm_data = pd.DataFrame({
+                    "lkkm scores": np.zeros(1), 
+                })
+                print("[PRED EVAL] <WARNING> no matching label for this video in LKKM dict.")
                 
-                if exp.checkbox("Playback Video", key=lbl, value=False):
-                    if cat == "Normal":
-                        path_mp4 = os.path.join(VIDEO_PATH, "{}_Videos_{}_x264.mp4".format(cat,num))
-                    else:
-                        path_mp4 = os.path.join(VIDEO_PATH, "{}{}_x264.mp4".format(cat,num))
-                           
-                    vf = open(path_mp4, "rb")
-                    vb = vf.read()
-                    st.video(vb)
-                    
-                if lbl in combine_d.keys():
-                    combine_data = pd.DataFrame({
-                        "final scores": combine_d[lbl],
-                    })
-                else:
-                    combine_data = pd.DataFrame({
-                        "final scores": np.zeros(1), 
-                    })
-                    print("[PRED EVAL] <WARNING> no matching label for this video in COMBINE dict.")
+            if lbl in scores_d.keys():
+                mil_data = pd.DataFrame({
+                    "MIL scores": scores_d[lbl],
+                })
+            else:
+                mil_data = pd.DataFrame({
+                    "MIL scores": np.zeros(1), 
+                })
+                print("[PRED EVAL] WARNING no matching label for this video in MIL scores dict.")    
                 
-                if lbl in sims_d.keys():
-                    flow_data = pd.DataFrame({
-                        "flow scores": sims_d[lbl],
-                    })
-                else:
-                    flow_data = pd.DataFrame({
-                        "flow scores": np.zeros(1), 
-                    })
-                    print("[PRED EVAL] <WARNING> no matching label for this video in FLOW dict.")
-                    
-                if lbl in lkkm_d.keys():
-                    # print("is in lkkm_d.keys()******")
-                    lkkm_data = pd.DataFrame({
-                        "lkkm scores": lkkm_d[lbl],
-                    })
-                else:
-                    lkkm_data = pd.DataFrame({
-                        "lkkm scores": np.zeros(1), 
-                    })
-                    print("[PRED EVAL] <WARNING> no matching label for this video in LKKM dict.")
-                    
-                if lbl in scores_d.keys():
-                    mil_data = pd.DataFrame({
-                        "MIL scores": scores_d[lbl],
-                    })
-                else:
-                    mil_data = pd.DataFrame({
-                        "MIL scores": np.zeros(1), 
-                    })
-                    print("[PRED EVAL] WARNING no matching label for this video in MIL scores dict.")    
-                    
-                res = None
-                anno_dat = np.zeros(len(scores_d[lbl])).tolist()
-                if lbl in anno_sgm_d.keys():
-                    # print("is in anno_sgm.keys()*********")
-                    anno_sgms = anno_sgm_d[lbl]
-                    # anno_dat = np.squeeze(anno_dat)
-                    if cat != "Normal":
-                        # print("anno_sgms")
-                        # print(anno_sgms)
-                        for a in anno_sgms:
-                           anno_dat[int(a)] = 1 #1 indexing
+            res = None
+            anno_dat = np.zeros(len(scores_d[lbl])).tolist()
+            if lbl in anno_sgm_d.keys():
+                # print("is in anno_sgm.keys()*********")
+                anno_sgms = anno_sgm_d[lbl]
+                # anno_dat = np.squeeze(anno_dat)
+                if cat != "Normal":
+                    # print("anno_sgms")
+                    # print(anno_sgms)
+                    for a in anno_sgms:
+                        anno_dat[int(a)] = 1 #1 indexing
 
-                        # print(anno_dat)
-                        set1 = False
-                        for a in range(len(anno_dat)):
-                            # print(a, end=" ")
-                            if not set1:
-                                if anno_dat[int(a)] == 1:
-                                    set1 = True
+                    # print(anno_dat)
+                    set1 = False
+                    for a in range(len(anno_dat)):
+                        # print(a, end=" ")
+                        if not set1:
+                            if anno_dat[int(a)] == 1:
+                                set1 = True
+                        else:
+                            if anno_dat[int(a)] == 1:
+                                set1 = False
                             else:
-                                if anno_dat[int(a)] == 1:
-                                    set1 = False
-                                else:
-                                    anno_dat[int(a)] = 1
-                        # print(anno_dat)
-                        # print(len(anno_dat))
-                    else:
-                        anno_dat[0] = 0 #to ensure that y-ax is scaled to 1 for normal footage
-                        
-                    anno_data = pd.DataFrame({
-                        "annotations": anno_dat,
-                    })
+                                anno_dat[int(a)] = 1
+                    # print(anno_dat)
+                    # print(len(anno_dat))
                 else:
-                    anno_data = pd.DataFrame({
-                        "annotations": anno_dat,
-                    })
-                    print("[PRED EVAL] <WARNING> no matching label for this video in ANNO dict.")
-                
-                all_data = anno_data 
-                
-                st.checkbox("Display MIL", value=False, key="{}{}MIL".format(cat, num)) 
-                st.checkbox("Display CRAFT", value=False, key="{}{}FLOW".format(cat, num))
-                st.checkbox("Display LKKM", value=False, key="{}{}LKKM".format(cat, num))
-                st.checkbox("Display FINAL", value=True, key="{}{}FINAL".format(cat, num))
-    
-                if eval("st.session_state.{}{}MIL".format(cat, num)):
-                    # all_data = pd.concat([all_data, mil_data], axis=1, ignore_index=True)              
-                    all_data["base-score"] = mil_data
-                if eval("st.session_state.{}{}FLOW".format(cat, num)):
-                    all_data["craft-score"] = flow_data
-                if eval("st.session_state.{}{}LKKM".format(cat, num)):
-                    all_data["lkkm-score"] = lkkm_data
-                if eval("st.session_state.{}{}FINAL".format(cat, num)):
-                    all_data["consensus"] = combine_data
-                              
-                # fig = plt.figure(figsize=(10, 4))
-                # years_of_experience =[1,2,3]
-                # salary=[ [6,8,10], [4,5,9], [3,5,7] ]
-                # plt.stackplot(all_data, labels=['Company A','Company B','Company C'])
-                # plt.title('Chart title')
-                # plt.xlabel('X axis title')
-                # plt.ylabel('Y axis title') 
-                # plt.legend(loc='upper left')
+                    anno_dat[0] = 0 #to ensure that y-ax is scaled to 1 for normal footage
+                    
+                anno_data = pd.DataFrame({
+                    "annotations": anno_dat,
+                })
+            else:
+                anno_data = pd.DataFrame({
+                    "annotations": anno_dat,
+                })
+                print("[PRED EVAL] <WARNING> no matching label for this video in ANNO dict.")
+            
+            all_data = anno_data 
+            
+            st.checkbox("Display MIL", value=False, key="{}{}MIL".format(cat, num)) 
+            st.checkbox("Display CRAFT", value=False, key="{}{}FLOW".format(cat, num))
+            st.checkbox("Display LKKM", value=False, key="{}{}LKKM".format(cat, num))
+            st.checkbox("Display FINAL", value=True, key="{}{}FINAL".format(cat, num))
 
-                # sns.lineplot(x = "distance", y = "mass", data = data_frame)
-                # st.pyplot(fig)
-                # custom_chart = alt.Chart(all_data).mark_area().encode(
-                #     x='temporal axis',
-                #     y='anomaly score',
-                #     color=alt.Color('animal',
-                #     scale=alt.Scale(
-                #     domain=['antelope', 'velociraptor'],
-                #     range=['blue', 'red'])
-                #     )).properties(
-                #         width=900,
-                #         height=500)
+            if eval("st.session_state.{}{}MIL".format(cat, num)):
+                # all_data = pd.concat([all_data, mil_data], axis=1, ignore_index=True)              
+                all_data["base-score"] = mil_data
+            if eval("st.session_state.{}{}FLOW".format(cat, num)):
+                all_data["craft-score"] = flow_data
+            if eval("st.session_state.{}{}LKKM".format(cat, num)):
+                all_data["lkkm-score"] = lkkm_data
+            if eval("st.session_state.{}{}FINAL".format(cat, num)):
+                all_data["consensus"] = combine_data
+                            
+            # fig = plt.figure(figsize=(10, 4))
+            # years_of_experience =[1,2,3]
+            # salary=[ [6,8,10], [4,5,9], [3,5,7] ]
+            # plt.stackplot(all_data, labels=['Company A','Company B','Company C'])
+            # plt.title('Chart title')
+            # plt.xlabel('X axis title')
+            # plt.ylabel('Y axis title') 
+            # plt.legend(loc='upper left')
 
-                # st.altair_chart(custom_chart)
-                st.area_chart(all_data, use_container_width=True)
-                
+            # sns.lineplot(x = "distance", y = "mass", data = data_frame)
+            # st.pyplot(fig)
+            # custom_chart = alt.Chart(all_data).mark_area().encode(
+            #     x='temporal axis',
+            #     y='anomaly score',
+            #     color=alt.Color('animal',
+            #     scale=alt.Scale(
+            #     domain=['antelope', 'velociraptor'],
+            #     range=['blue', 'red'])
+            #     )).properties(
+            #         width=900,
+            #         height=500)
+
+            # st.altair_chart(custom_chart)
+            st.area_chart(all_data, use_container_width=True)
+            
 
 def consensus(base, sims, lkkm, wdw):
     profile_d = {}
