@@ -27,7 +27,6 @@ from PIL import Image
 
 
 root=os.getcwd()
-VIDEO_PATH="/home/tomsch/Honours/Honours_Project/test-video-set/all-videos" #TODO change to all-videos
 ANNO_FILE=os.path.join(root, "demo", "annotations", "Temporal_Anomaly_Annotation.txt")
 min_thresh = 0.1
 max_thresh = 0.9
@@ -788,7 +787,6 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
     st.image(cm_disp, width=None)
     
     # st.write(scores_d.keys())
-    st.write("check out this [link](https://drive.google.com/file/d/1AYPFh8-2VEmQb95I0Of-pm7y3H1KofM4/view?usp=sharing)")
     for lbl in sorted(download_map.keys(), reverse=True):
         # st.write(vid)
         cat, num = lbl.split("/")       
@@ -796,7 +794,7 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
 
         with exp:
             dlkey = "{}{}".format(cat, num) 
-            st.write("[Playback Video]({}})".format(dlkey))
+            st.write("[Playback Video]({})".format(dlkey))
                 
             if lbl in combine_d.keys():
                 combine_data = pd.DataFrame({
