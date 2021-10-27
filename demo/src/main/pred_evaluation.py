@@ -795,8 +795,8 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
         exp = st.expander(label=lbl, expanded=False)
 
         with exp:
-            dlkey = "{}{}".format(cat, num) 
-            st.write("[Playback Video]({})".format(download_map[dlkey]))
+#             dlkey = "{}{}".format(cat, num) 
+            st.write("[Playback Video]({})".format(download_map[lbl]))
                 
             if lbl in combine_d.keys():
                 combine_data = pd.DataFrame({
