@@ -905,14 +905,12 @@ def anno_vs_score_eval(antn, scores_d):
 
 
 def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp, logo, lkkm_raw, lkkm_dcmp, raft_gunnar, consense, base_mod):
-    st.image(logo, use_column_width="always")
     st.markdown("<h1 style='text-align: center; color: white; font-size: 3vw'>Anomaly Detection Framework</h1>", unsafe_allow_html=True)
     st.markdown("### A consensus framework for robust anomaly detection in CCTV surveillance.")
     st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Consensus</h1>", unsafe_allow_html=True)
     st.markdown("Score profiles are consensus between 3 models/heuristics, namely: *MIL base-model*, *CRAFT-flow*, *LKKM-flow*")
     st.image(consense)
     st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Base Model</h1>", unsafe_allow_html=True)
-    st.markdown("Score profiles are consensus between 3 models/heuristics, namely: *MIL base-model*, *CRAFT-flow*, *LKKM-flow*")
     """
     The approach of the base model is adopted from *Real-world Anomaly Detection in Surveillance Videos by W. Sultani*. \n
     The base model formulates anomaly detection as a weakly-supervised regression problem that receives C3D features as predictors and produces a score in the range [0, 1] as the response. 
@@ -999,7 +997,8 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
 
         with exp:
 #             dlkey = "{}{}".format(cat, num) 
-            st.write("[Playback Video]({})".format(download_map[lbl]))
+            # st.write("[Playback Video]({})".format(download_map[lbl]))
+            st_player("{}".format(download_map[lbl]))
                 
             if lbl in combine_d.keys():
                 combine_data = pd.DataFrame({
@@ -1263,7 +1262,6 @@ def main(pred_path, sim_path, lkkm_path):
     #     ConfusionMatrixDisplay.from_predictions(anno_seq, score_seq_class, normalize='true')
     #     plt.show()
     
-    
     cm_disp, anno_sgm_d, res_d = anno_vs_score_eval(antn, scores_d) #TODO back to profile
     cm_img =  Image.open("demo/img/CMsb.png")
     roc_img =  Image.open("demo/img/ROCsb.png")
@@ -1273,8 +1271,6 @@ def main(pred_path, sim_path, lkkm_path):
     raft_gunnar = Image.open("demo/img/raft_gunnar.png")
     base_mod = Image.open("demo/img/basemodel.png")
     consense = Image.open("demo/img/consense.png")
-    
-
     
     st_demo(combine_d=profile_d, #TODO should be profile_d
         scores_d=scores_d,
