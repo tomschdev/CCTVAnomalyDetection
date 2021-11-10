@@ -24,7 +24,7 @@ import altair as alt
 from math import ceil
 # from sklearn.metrics import RocCurveDisplay, ConfusionMatrixDisplay
 from PIL import Image
-
+from streamlit_player import st_player
 
 root=os.getcwd()
 ANNO_FILE=os.path.join(root, "demo", "annotations", "Temporal_Anomaly_Annotation.txt")
@@ -785,6 +785,9 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
     
     st.image(roc_disp, width=None)
     st.image(cm_disp, width=None)
+    st_player("https://www.youtube.com/watch?v=gzedXyJQ7nQ")
+    st_player("https://www.youtube.com/watch?v=vVCYlmVoPeI")
+    
     
     # st.write(scores_d.keys())
     for lbl in sorted(download_map.keys(), reverse=True):
@@ -1083,125 +1086,3 @@ if __name__ == '__main__':
    
     main(pred_path, sim_path, lkkm_path)
     
-    
-#@st.cache(allow_output_mutation=True)
-#def get_base64_of_bin_file(bin_file):
-#    with open(bin_file, 'rb') as f:
-#        data = f.read()
-#    return base64.b64encode(data).decode()
-#
-#def set_png_as_page_bg(png_file):
-#    bin_str = get_base64_of_bin_file(png_file)
-#    page_bg_img = '''
-#    <style>
-#    body {
-#    background-image: url("data:image/png;base64,%s");
-#    background-size: cover;
-#    }
-#    </style>
-#    ''' % bin_str
-#    
-#    st.markdown(page_bg_img, unsafe_allow_html=True)
-#    return
-#
-#
-#def plot_data(**kwargs):
-#    # if disp:
-#    # if "{}-MIL".format(kwargs["vid"]) in st.session_state:
-#    # st.write("FOUND IT")
-#    
-#    all_data = kwargs["anno"]
-#    
-#    if eval("st.session_state.{}MIL".format(kwargs["vid"])):
-#        all_data = pd.concat([all_data, kwargs["MIL"]], axis=1, ignore_index=True)              
-#    if eval("st.session_state.{}FLOW".format(kwargs["vid"])):
-#        all_data = pd.concat([all_data, kwargs["FLOW"]], axis=1, ignore_index=True)              
-#        
-#    return st.area_chart(all_data, use_container_width=True)
-#
-#    
-#def relative_scaling(sims, deltas):
-#    scaled_sims = {}
-#    
-#    # SIM ERR PER DELTA -> POOR RESULTS
-#    # for lbl, sim in sims.items():
-#        # sc_sim = []
-#        # delta = deltas[lbl]
-#        # ad = np.average(delta)
-#        # for s, d in zip(sim, delta):
-#            # sc_sim.append(s/(d+ad))
-#        # scaled_sims[lbl] = sc_sim
-#    # return scaled_sims    
-#    print("[REL SCALE] len of sims in: ", len(sims))
-#    # sim_keys = sims.keys()
-#    # shuffle(sim_keys)
-#    batch_size = int(len(sims)/10)    
-#    for batch in range(1, 10):
-#        sc = StandardScaler()
-#        
-#        if batch == 9:
-#            subset = islice(sims.items(), int((batch-1)*batch_size), None)
-#        else:
-#            subset = islice(sims.items(), int((batch-1)*batch_size), int(batch*batch_size))
-#        
-#        batch_values = []
-#        for lbl, sim in subset:
-#            # print(lbl)
-#            # sc.partial_fit(np.expand_dims(sim, axis=0))
-#            batch_values.extend(sim)
-#        # print("len batch values: ", len(batch_values))
-#        sc.fit(np.asarray(batch_values).reshape((1, len(batch_values))))
-#        print(sc.mean_)
-#        print(sc.scale_)
-#        
-#        u = sc.mean_
-#        s = sc.scale_
-#        
-#        if batch == 9:
-#            subset = islice(sims.items(), int((batch-1)*batch_size), None)
-#        else:
-#            subset = islice(sims.items(), int((batch-1)*batch_size), int(batch*batch_size))
-#        
-#        for lbl, sim in subset:
-#            sim_sc = [(x-u)/s for x in sim]
-#            # print("initial sim len: ", len(sim))
-#            l = len(sim_sc)
-#            print(sim_sc)
-#            scaled_sims[lbl] = np.asarray(sim_sc).reshape(l, 1)
-#            # print("scaled sim len: ", len(scaled_sims[lbl]))
-#            
-#    print("[REL SCALE] len of sims out: ", len(scaled_sims))
-#    time.sleep(10)
-#    
-#    return scaled_sims
-#
-##in case of 32 sgm verification
-##DEPRECATED - using all fc6 verfification rather
-#def verify_anom(scores_32, n_frm, anom_window, threshold):
-#    n_frames = n_frm
-#    n_frames_sgm = int(n_frames/32)
-#    frame_borders = [border for border in range(0, n_frames, n_frames_sgm)]
-#    frame_borders = frame_borders[:32]
-#    annotated_sgms = []
-#    for i in range(0, len(frame_borders)):
-#        if anom_window[0] >= frame_borders[i] and anom_window[0] <= (frame_borders[i])+n_frames_sgm:
-#            annotated_sgms.append(i)
-#        if anom_window[1] >= frame_borders[i] and anom_window[1] <= (frame_borders[i])+n_frames_sgm:
-#            annotated_sgms.append(i)
-#
-#    #check these indices' anom scores
-#    uniq_anno_sgms = list(set(annotated_sgms)) #get unique list i.e., remove doubles
-#    uniq_anno_sgms = sorted(uniq_anno_sgms)
-#    print("\t\t[PRED_EVAL] 0-indexed annotation segments: {}".format(uniq_anno_sgms))
-#    print("\t\t[PRED_EVAL] number of segment scores: {}".format(len(scores_32)))
-#    for anno in range(uniq_anno_sgms[0], (uniq_anno_sgms[-1:][0])+1, 1):
-#        pred_score = scores_32[anno]
-#        print("\t\t\t1-indexed annotated sgm {} - has predicted score of {}".format(anno+1, pred_score))
-#        #if any sgm which falls within annotated window has anom_score above threshold - true pos for anomaly detec
-#        if pred_score > threshold:
-#            return True, uniq_anno_sgms
-#    
-#    return False, uniq_anno_sgms
-#            
-#    #annotations are made with 30fps fixed
-#    
