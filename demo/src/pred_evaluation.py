@@ -904,13 +904,65 @@ def anno_vs_score_eval(antn, scores_d):
     return None, anno_sgm_d, res_d
 
 
-def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp):
-    st.markdown("<h1 style='text-align: center; color: white; font-size: 2.5vw'>Anomaly Detection Framework</h1>", unsafe_allow_html=True)
+def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp, logo, lkkm_raw, lkkm_dcmp, raft_gunnar):
+    st.image(logo)
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 3vw'>Anomaly Detection Framework</h1>", unsafe_allow_html=True)
     st.markdown("### This demo displays results of the application of an anomaly detection framework to a set of unseen CCTV surveillance videos.")
     st.markdown("### The framework assigns an anomaly score in the range [0, 1] per 16 frames of video.")
     st.markdown("### The final score is decided as a consensus between 3 models/heuristics, namely: *MIL base-model*, *CRAFT-flow*, *LKKM-flow*")
-    st.markdown("### At each video, the display of relevant scores can be toggled and an option to view the video is presented.")
-    st.markdown("### The categories of video include:")
+ 
+    
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Experiments</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 1.5vw'>CRAFT: Truck/Train Collision</h1>", unsafe_allow_html=True)
+    """
+    The video clip below demonstrates CRAFT's exploitation of RAFT's inability to predict optical flow for anomalous sections of video. \n
+    CRAFT quantifies anomaly by assigning anomaly scores proportional to reconstruction error. 
+    """
+    st_player("https://www.youtube.com/watch?v=gzedXyJQ7nQ")
+    """
+    The score profiles below were obtained during experimentation with the CRAFT concept. \n
+    A column corresponds to a video instance. \n
+    The top row of scores were extracted using RAFT for optical flow estimation.
+    The bottom row of scores were extracted using the traditional Gunnar Farneback approach. 
+    """
+    st.image(raft_gunnar)
+    
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 1.5vw'>LKKM: Highway U-Turn</h1>", unsafe_allow_html=True)
+    """
+    The video clip below is a demonstration of application of the Lukas-Kanade optical flow method to a highway scene that contains an accident. \n
+    The intenion is to show that LKKM can be particularly useful in such a scenario, where a deviation from typical trajectories often corresponds to anomaly. 
+    """
+    st_player("https://www.youtube.com/watch?v=vVCYlmVoPeI")
+    """
+    The score profile below was extracted by applying LKKM to the above footage. \n
+    That is, at each frame flow vectors contribute to a cumulative K-Means clustering of all flow vectors. \n
+    Anomaly scores at each frame are proportional to the maximum distances between a number of flow vectors and their nearest clusters.  
+    """
+    st.image(lkkm_raw)
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 1.5vw'>LKKM: Repetitive Walk</h1>", unsafe_allow_html=True)
+    """
+    This video comprises repetitions of a short video clip of people walking on public walkways. \n
+    LKKM is applied to the footage to learn repetitive patterns of motion. \n
+    The intention is that LKKM produces incremental improvements in LKKM scores - this is an indication that with each trial of the same motion, LKKM increases the normal connotation attached to that motion. 
+    """
+    st_player("https://www.youtube.com/watch?v=yNtthVwohPA")
+    """
+    To address the fact that score profiles are likely to gradually decline as more footage is processed, 
+    a time-series decomposition is performed on the scores and the score profile is replaced with the residual component of the decomposition.  \n
+    For the repetitive walk, LKKM produces the score profile displayed at the top of the figure. The remaining score profiles are the components that result from decomposition. \n
+    The bottom score profile is the residual component. Ideally, this profile captures chnages in LKKM scores that originate as a result of inherent noise in the time-series i.e., anomalous activity. 
+    """
+    st.image(lkkm_dcmp)
+    
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Evaluation</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 1.5vw'>ROC Curve</h1>", unsafe_allow_html=True)
+    st.image(roc_disp, width=None)
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 1.5vw'>Optimal Confusion Matrix</h1>", unsafe_allow_html=True)
+    st.image(cm_disp, width=None)
+    
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Score Profiles</h1>", unsafe_allow_html=True)   
+    st.markdown("At each video, the display of relevant scores can be toggled and an option to view the video is presented.")
+    st.markdown("The categories of video include:")
     """
     * Abuse
     * Arrest
@@ -927,11 +979,6 @@ def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc
     * Vandalism
     * Normal
     """
-    
-    st.image(roc_disp, width=None)
-    st.image(cm_disp, width=None)
-    st_player("https://www.youtube.com/watch?v=gzedXyJQ7nQ")
-    st_player("https://www.youtube.com/watch?v=vVCYlmVoPeI")
     
     
     # st.write(scores_d.keys())
@@ -1210,7 +1257,10 @@ def main(pred_path, sim_path, lkkm_path):
     cm_disp, anno_sgm_d, res_d = anno_vs_score_eval(antn, scores_d) #TODO back to profile
     cm_img =  Image.open("demo/img/CMsb.png")
     roc_img =  Image.open("demo/img/ROCsb.png")
-
+    logo = Image.open("demo/img/logo.png")
+    lkkm_raw = Image.open("demo/img/lkkm_raw.png")
+    lkkm_dcmp = Image.open("demo/img/lkkm_dcmp.png")
+    raft_gunnar = Image.open("demo/img/raft_gunnar.png")
 
     
     st_demo(combine_d=profile_d, #TODO should be profile_d
@@ -1220,7 +1270,12 @@ def main(pred_path, sim_path, lkkm_path):
         anno_sgm_d=anno_sgm_d,
         res_d=res_d,
         cm_disp=cm_img,
-        roc_disp=roc_img)
+        roc_disp=roc_img,
+        logo = logo,
+        lkkm_raw = lkkm_raw,
+        lkkm_dcmp=lkkm_dcmp,
+        raft_gunnar=raft_gunnar,
+        )
         
 if __name__ == '__main__':
     pred_path = "ofc-data/kraken_base_scores.json"
