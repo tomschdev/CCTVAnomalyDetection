@@ -1272,7 +1272,7 @@ def main(pred_path, sim_path, lkkm_path):
     lkkm_raw = Image.open("demo/img/lkkm_raw.png")
     lkkm_dcmp = Image.open("demo/img/lkkm_dcmp.png")
     raft_gunnar = Image.open("demo/img/raft_gunnar.png")
-    base_mod = Image.open("demo/img/basemodel.png")
+    base_mod = Image.open("demo/img/tbw.png")
     consense = Image.open("demo/img/consense.png")
     pseudo = Image.open("demo/img/pseudocomb.png")
     
