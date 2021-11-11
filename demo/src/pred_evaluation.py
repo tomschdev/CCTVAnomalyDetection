@@ -904,12 +904,15 @@ def anno_vs_score_eval(antn, scores_d):
     return None, anno_sgm_d, res_d
 
 
-def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp, logo, lkkm_raw, lkkm_dcmp, raft_gunnar, consense, base_mod):
+def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp, logo, lkkm_raw, lkkm_dcmp, raft_gunnar, consense, base_mod, pseudo):
     st.markdown("<h1 style='text-align: center; color: white; font-size: 3vw'>Anomaly Detection Framework</h1>", unsafe_allow_html=True)
     st.markdown("### A consensus framework for robust anomaly detection in CCTV surveillance.")
     st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Consensus</h1>", unsafe_allow_html=True)
-    st.markdown("Score profiles are consensus between 3 models/heuristics, namely: *MIL base-model*, *CRAFT-flow*, *LKKM-flow*")
+    st.markdown("Score profiles are consensus between 3 models/heuristics, namely: *MIL base-model*, *CRAFT-flow*, *LKKM-flow*.")
     st.image(consense)
+    st.markdown("The figure below displays pseudo-code of the alogorithm that is used to map 3 scores to 1 consensus score.")
+    st.image(pseudo)
+    
     st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Base Model</h1>", unsafe_allow_html=True)
     """
     The approach of the base model is adopted from *Real-world Anomaly Detection in Surveillance Videos by W. Sultani*. \n
@@ -1271,6 +1274,7 @@ def main(pred_path, sim_path, lkkm_path):
     raft_gunnar = Image.open("demo/img/raft_gunnar.png")
     base_mod = Image.open("demo/img/basemodel.png")
     consense = Image.open("demo/img/consense.png")
+    pseudo = Image.open("demo/img/pseudocomb.png")
     
     st_demo(combine_d=profile_d, #TODO should be profile_d
         scores_d=scores_d,
@@ -1285,7 +1289,8 @@ def main(pred_path, sim_path, lkkm_path):
         lkkm_dcmp=lkkm_dcmp,
         raft_gunnar=raft_gunnar,
         consense=consense,
-        base_mod=base_mod
+        base_mod=base_mod,
+        pseudo=pseudo
         )
         
 if __name__ == '__main__':
