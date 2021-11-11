@@ -906,7 +906,7 @@ def anno_vs_score_eval(antn, scores_d):
 
 def st_demo(combine_d, scores_d, sims_d, lkkm_d, anno_sgm_d, res_d, cm_disp, roc_disp, logo, lkkm_raw, lkkm_dcmp, raft_gunnar, consense, base_mod, pseudo):
     st.markdown("<h1 style='text-align: center; color: white; font-size: 3vw'>Anomaly Detection Framework</h1>", unsafe_allow_html=True)
-    st.markdown("### A consensus framework for robust anomaly detection in CCTV surveillance.")
+    st.markdown("<h1 style='text-align: center; color: white; font-size: 1vw'>A consensus framework for robust anomaly detection in CCTV surveillance.</h1>", unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center; color: white; font-size: 2vw'>Consensus</h1>", unsafe_allow_html=True)
     st.markdown("Score profiles are consensus between 3 models/heuristics, namely: *MIL base-model*, *CRAFT-flow*, *LKKM-flow*.")
     st.image(consense)
